@@ -1,21 +1,10 @@
 <template>
     <div id="layout">
-        <header style="grid-area: header">search</header>
-        <nav
-            class="card"
-            style="grid-area: nav">
+        <nav class="card" style="grid-area: nav; display: flex; flex-direction: column; gap: 1rem;">
             <router-link to="/posts">Posts</router-link>
+            <router-link to="/about">About</router-link>
         </nav>
-        <section
-            class="card"
-            style="grid-area: context">
-            <router-view name="context" />
-        </section>
-        <section
-            class="card"
-            style="grid-area: detail">
-            <router-view name="detail" />
-        </section>
+        <router-view style="grid-area: router-view" />
     </div>
 </template>
 
@@ -25,20 +14,12 @@
     max-width: 1440px;
     display: grid;
     gap: 1.5rem;
-    grid-template-columns: 256px 4fr 8fr;
-    grid-template-rows: auto 1fr;
+    margin: auto;
+    grid-template-columns: 256px 1fr;
+    grid-template-rows: auto 1fr auto;
     grid-template-areas:
-        'header header header'
-        'nav context detail';
-}
-.card {
-    padding: 1rem;
-    border-radius: 0.5rem;
-    background-color: #fff;
-}
-header {
-    background-color: #fff;
-    padding: 1rem 1.5rem;
-    height: 2.625rem;
+        '. .'
+        'nav router-view'
+        '. .'
 }
 </style>

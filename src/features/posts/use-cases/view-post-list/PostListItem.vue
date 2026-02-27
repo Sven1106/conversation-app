@@ -1,9 +1,9 @@
 <script setup lang="ts">
-defineProps({
-    title: { type: String, required: true },
-    id: { type: Number, required: true },
-});
+defineProps<{
+    id: number;
+    title: string;
+}>();
 </script>
 <template>
-    <h3>{{ title }}</h3>
+    <RouterLink style="display: block;" :to="{ name: 'post-details', params: { id} }"> {{ title }} </RouterLink>
 </template>

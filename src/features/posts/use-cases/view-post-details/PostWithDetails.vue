@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-defineProps({
-    id: { type: Number, required: true },
-});
+defineProps<{
+    id: string;
+}>();
 </script>
 <template>
-    <h2>Post Details</h2>
+    <h2>Post Details {{ id }}</h2>
     <p>Here are the details of the post.</p>
 </template>
