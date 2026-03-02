@@ -3,10 +3,10 @@ import { ref } from 'vue';
 import { RouterView, useRoute } from 'vue-router';
 import NothingToShow from '../shared/NothingToShow.vue';
 import TwoColumnLayout from '@/layout/TwoColumnLayout.vue';
-import PostList from '../use-cases/view-post-list/PostList.vue';
+import PostList from '../views/post-list/PostList.vue';
 
 const isPostListEmpty = ref(true);
-const route = useRoute()
+const route = useRoute();
 </script>
 
 <template>
@@ -15,7 +15,7 @@ const route = useRoute()
             <PostList @empty-changed="isPostListEmpty = $event" />
         </template>
         <template #detail>
-            <NothingToShow v-if="isPostListEmpty && !('id' in route.params)" />
+            <NothingToShow v-if="isPostListEmpty && route.name === 'posts-empty'" />
             <RouterView v-else />
         </template>
     </TwoColumnLayout>
